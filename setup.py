@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
   name="snipp",
-  version="0.1.1",
+  version="0.1.2",
   packages=find_packages(),
   install_requires=[
     "watchdog",
@@ -19,7 +19,7 @@ setup(
   description="Auto-upload ShadowPlay clips to Snipp.",
   long_description=open("README.md", encoding="utf-8").read(),
   long_description_content_type="text/markdown",
-  url="https://github.com/yourusername/snipp",
+  url="https://github.com/snipp-gg/ShadowPlay",
   classifiers=[
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
