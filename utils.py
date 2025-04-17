@@ -14,5 +14,5 @@ def wait_for_file_completion(file_path):
       return True
     size = current_size
     time.sleep(0.2)
-  print(f"{Fore.YELLOW}[WARNING] Waiting for clip to finish processing...{Style.RESET_ALL}")
+  print(f"{Fore.LIGHTYELLOW_EX}[WARNING] Waiting for clip to finish processing...{Style.RESET_ALL}")
   return False

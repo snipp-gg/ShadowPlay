@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
   name="snipp",
-  version="0.1.2",
+  version="0.1.3",
   packages=find_packages(),
   install_requires=[
     "watchdog",
@@ -12,7 +12,7 @@ setup(
   ],
   entry_points={
     "console_scripts": [
-      "snipp-shadowplay=snipp_uploader.cli:main"
+      "snipp=snipp_shadowplay.cli:main"
     ]
   },
   author="Snipp",
@@ -20,6 +20,10 @@ setup(
   long_description=open("README.md", encoding="utf-8").read(),
   long_description_content_type="text/markdown",
   url="https://github.com/snipp-gg/ShadowPlay",
+  project_urls={
+    "Repository": "https://github.com/snipp-gg/ShadowPlay",
+    "Issues": "https://github.com/snipp-gg/ShadowPlay/issues",
+  },
   classifiers=[
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",

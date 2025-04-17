@@ -8,4 +8,4 @@ def load_from_config():
   if os.path.exists(config_path):
     with open(config_path) as f:
       return f.read().strip()
-  raise RuntimeError("API key not found. Set SNIPP_API_KEY env or ~/.snipp_uploader file.") 
+  raise RuntimeError("API key environmental variable (SNIPP_API_KEY) not found.") 
