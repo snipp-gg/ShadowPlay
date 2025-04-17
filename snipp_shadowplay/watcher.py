@@ -9,6 +9,7 @@ from .utils import wait_for_file_completion
 
 init()
 
+os.system('title Snipp + ShadowPlay' if os.name == 'nt' else '')
 os.system('cls' if os.name == 'nt' else 'clear')
 
 class VideoHandler(FileSystemEventHandler):
