@@ -36,15 +36,9 @@ pip install snipp
    Visit the [Snipp Console](https://snipp.gg/settings/console) and generate a key.
 
 2. **Set your API Key**  
-   Either:
-   - Set it as an environment variable in **Command Prompt**:
+   Set your API Key as an environment variable in **Command Prompt** or **PowerShell**:
      ```bash
-     set SNIPP_API_KEY=YOUR_API_KEY
-     ```
-    or
-   - Set it as an environment variable in **PowerShell**:
-     ```bash
-     export SNIPP_API_KEY=YOUR_API_KEY
+     setx SNIPP_API_KEY YOUR_API_KEY
      ```
 
 ## ▶️ Usage
