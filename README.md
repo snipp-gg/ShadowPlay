@@ -26,7 +26,7 @@ Dependencies (automatically installed with the package):
 
 ## 💪 Installation
 
-```bash
+```cmd
 pip install snipp
 ```
 
@@ -37,15 +37,15 @@ pip install snipp
 
 2. **Set your API Key**  
    Set your API Key as an environment variable in **Command Prompt** or **PowerShell**:
-     ```bash
-     setx SNIPP_API_KEY YOUR_API_KEY
-     ```
+    ```cmd
+    setx SNIPP_API_KEY YOUR_API_KEY
+    ```
 
 ## ▶️ Usage
 
 Once installed and configured, run:
 
-```bash
+```cmd
 snipp
 ```
 
