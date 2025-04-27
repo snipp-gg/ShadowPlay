@@ -32,7 +32,7 @@ def upload_video(file_path, api_key):
     with open(file_path, "rb") as video_file:
       files = {"file": (os.path.basename(file_path), video_file, "video/mp4")}
       response = requests.post(
-        "https://eu-west.snipp.gg/upload",
+        "https://api.snipp.gg/upload",
         headers={"api-key": api_key, "Accept": "application/json"},
         files=files
       )
