@@ -1,18 +1,18 @@
-# Snipp + ShadowPlay
+# Snipp 🤝 ShadowPlay
 
 A simple Python package that automatically uploads [NVIDIA ShadowPlay](https://www.nvidia.com/en-ph/geforce/geforce-experience/shadowplay/) clips to [Snipp](https://snipp.gg), making your gaming highlight sharing seamless.
 
-## 🎯 Purpose
+## Purpose
 
 This package is built **exclusively for use with [Snipp](https://snipp.gg)**. It automatically uploads your clips and copies shareable links to your clipboard. This package is designed to be used with [NVIDIA ShadowPlay](https://www.nvidia.com/en-ph/geforce/geforce-experience/shadowplay/).
 
-## 🚀 Features
+## Features
 
 - Monitors your ShadowPlay video folder for new clips
 - Uploads clips to Snipp via the API
 - Copies the shareable URL to your clipboard automatically
 
-## ⚙️ Requirements
+## Requirements
 
 - Python 3.8 or higher (preferably not the Microsoft Store version)
 - NVIDIA ShadowPlay (with clip saving enabled)
@@ -24,13 +24,13 @@ Dependencies (automatically installed with the package):
 - `watchdog`
 - `colorama`
 
-## 💪 Installation
+## Installation
 
 ```cmd
 pip install snipp
 ```
 
-## 🔐 Configuration
+## Configuration
 
 1. **Get your API Key:**  
    Visit the [Snipp Console](https://snipp.gg/settings/console) and generate a key.
@@ -41,7 +41,7 @@ pip install snipp
     setx SNIPP_API_KEY YOUR_API_KEY
     ```
 
-## ▶️ Usage
+## Usage
 
 Once installed and configured, run:
 
@@ -51,19 +51,19 @@ snipp
 
 The script will start watching your `~/Videos` folder and upload new `.mp4` files automatically.
 
-## ✅ Usage Policy
+## Usage Policy
 
 - This package is **authorised solely for use with Snipp**.
 - **Do not modify it to interact with other services**. Violations may lead to API key revocation or account suspension.
 
-## 🤝 Contributing
+## Contributing
 
 We welcome suggestions and improvements for better integration with Snipp:
 
 - Open an issue
 - Submit a pull request that adheres to our [Terms of Service](https://snipp.gg/terms) and [Privacy Policy](https://snipp.gg/privacy)
 
-## 📄 Licence
+## Licence
 
 MIT Licence © 2025 Snipp. See [LICENCE](LICENCE) for full details.
 
