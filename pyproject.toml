@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snipp-shadowplay"
+version = "0.2.0"
+description = "Auto-upload NVIDIA ShadowPlay clips to Snipp"
+requires-python = ">=3.9"
+license = "MIT"
+readme = "README.md"
+keywords = ["snipp", "shadowplay", "nvidia", "clip", "upload"]
+dependencies = [
+  "watchdog",
+  "requests",
+  "pyperclip",
+  "colorama",
+]
+
+[project.urls]
+Homepage = "https://docs.snipp.gg/sdks/shadowplay"
+Repository = "https://github.com/snipp-gg/ShadowPlay"
+Issues = "https://github.com/snipp-gg/ShadowPlay/issues"
+
+[project.scripts]
+snipp = "snipp_shadowplay.cli:main"

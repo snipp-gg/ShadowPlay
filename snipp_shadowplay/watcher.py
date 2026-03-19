@@ -9,6 +9,8 @@ from .utils import wait_for_file_completion
 
 init()
 
+BASE_URL = "https://api.snipp.gg"
+
 os.system('title Snipp + ShadowPlay' if os.name == 'nt' else '')
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -23,33 +25,40 @@ class VideoHandler(FileSystemEventHandler):
 
 def upload_video(file_path, api_key):
   if not wait_for_file_completion(file_path):
+    print(f"{Fore.LIGHTRED_EX}[ERROR] Upload skipped: File was not ready in time.{Style.RESET_ALL}")
     return
   file_size = os.path.getsize(file_path)
   if file_size > 1_073_741_824:
-    print(f"{Fore.LIGHTRED_EX}[ERROR] Upload skipped: File size exceeds upload limit.{Style.RESET_ALL}")
+    print(f"{Fore.LIGHTRED_EX}[ERROR] Upload skipped: File size exceeds 1 GB limit.{Style.RESET_ALL}")
     return
   try:
     with open(file_path, "rb") as video_file:
-      files = {"file": (os.path.basename(file_path), video_file, "video/mp4")}
+      files = {"file": (os.path.basename(file_path), video_file)}
       response = requests.post(
-        "https://api.snipp.gg/upload",
-        headers={"api-key": api_key, "Accept": "application/json"},
-        files=files
+        f"{BASE_URL}/upload",
+        headers={
+          "api-key": api_key,
+          "postprivacy": "unlisted",
+        },
+        files=files,
       )
-    if response.status_code in (200, 201):
+    if response.status_code == 200:
       try:
-        url = response.json().get("url")
+        data = response.json()
+        url = data.get("url")
         if url:
           pyperclip.copy(url)
           print(f"{Fore.LIGHTGREEN_EX}[SUCCESS] Uploaded clip: {url}{Style.RESET_ALL}")
+        else:
+          print(f"{Fore.LIGHTYELLOW_EX}[WARNING] Upload succeeded but no URL in response.{Style.RESET_ALL}")
       except ValueError:
         print(f"{Fore.LIGHTRED_EX}[ERROR] Invalid response: {response.text}{Style.RESET_ALL}")
     else:
       try:
-        error_message = response.json().get("error", response.text)
+        message = response.json().get("message", response.text)
       except ValueError:
-        error_message = response.text
-      print(f"{Fore.LIGHTRED_EX}[ERROR] Upload failed: {error_message}{Style.RESET_ALL}")
+        message = response.text
+      print(f"{Fore.LIGHTRED_EX}[ERROR] Upload failed ({response.status_code}): {message}{Style.RESET_ALL}")
   except Exception as e:
     print(f"{Fore.LIGHTRED_EX}[ERROR] Upload failed: {e}{Style.RESET_ALL}")
 
@@ -63,10 +72,11 @@ def start_watching(api_key):
   observer.schedule(VideoHandler(api_key), videos_path, recursive=True)
   observer.start()
   print(f"{Fore.LIGHTBLUE_EX}[INFO] Snipp + ShadowPlay started.{Style.RESET_ALL}")
+  print(f"{Fore.LIGHTBLUE_EX}[INFO] Watching: {videos_path}{Style.RESET_ALL}")
   try:
     while True:
       time.sleep(1)
   except KeyboardInterrupt:
     observer.stop()
-    print(f"{Fore.LIGHTBLUE_EX}[INFO] Snipp + ShadowPlay stopped.{Style.RESET_ALL}")
+    print(f"\n{Fore.LIGHTBLUE_EX}[INFO] Snipp + ShadowPlay stopped.{Style.RESET_ALL}")
   observer.join()
