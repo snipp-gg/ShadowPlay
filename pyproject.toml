@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "snipp-shadowplay"
-version = "0.2.0"
+version = "0.1.0"
 description = "Auto-upload NVIDIA ShadowPlay clips to Snipp"
 requires-python = ">=3.9"
 license = "MIT"
 readme = "README.md"
-keywords = ["snipp", "shadowplay", "nvidia", "clip", "upload"]
+keywords = ["clips", "upload", "snipp", "images", "share", "api", "nvidia", "shadowplay"]
 dependencies = [
   "watchdog",
   "requests",
