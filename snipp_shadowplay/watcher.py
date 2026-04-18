@@ -38,7 +38,7 @@ def upload_video(file_path, api_key):
         f"{BASE_URL}/upload",
         headers={
           "api-key": api_key,
-          "postprivacy": "unlisted",
+          "post-privacy": "unlisted",
         },
         files=files,
       )
