@@ -55,7 +55,8 @@ def upload_video(file_path, api_key):
         print(f"{Fore.LIGHTRED_EX}[ERROR] Invalid response: {response.text}{Style.RESET_ALL}")
     else:
       try:
-        message = response.json().get("message", response.text)
+        body = response.json()
+        message = body.get("error") or body.get("message") or response.text
       except ValueError:
         message = response.text
       print(f"{Fore.LIGHTRED_EX}[ERROR] Upload failed ({response.status_code}): {message}{Style.RESET_ALL}")
