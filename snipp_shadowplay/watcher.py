@@ -27,10 +27,6 @@ def upload_video(file_path, api_key):
   if not wait_for_file_completion(file_path):
     print(f"{Fore.LIGHTRED_EX}[ERROR] Upload skipped: File was not ready in time.{Style.RESET_ALL}")
     return
-  file_size = os.path.getsize(file_path)
-  if file_size > 1_073_741_824:
-    print(f"{Fore.LIGHTRED_EX}[ERROR] Upload skipped: File size exceeds 1 GB limit.{Style.RESET_ALL}")
-    return
   try:
     with open(file_path, "rb") as video_file:
       files = {"file": (os.path.basename(file_path), video_file)}
@@ -45,6 +41,12 @@ def upload_video(file_path, api_key):
     if response.status_code == 200:
       try:
         data = response.json()
+        failed = data.get("failed") or []
+        if failed:
+          first = failed[0]
+          err = first.get("error") or "Unknown error."
+          print(f"{Fore.LIGHTRED_EX}[ERROR] Upload rejected: {err}{Style.RESET_ALL}")
+          return
         url = data.get("url")
         if url:
           pyperclip.copy(url)
